@@ -4,12 +4,12 @@ fun main() {
 
     while (true){
 
-        println("Введите название вашей карты, если она VK Pay, то просто нажмите Enter")
+        println("Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РІР°С€РµР№ РєР°СЂС‚С‹, РµСЃР»Рё РѕРЅР° VK Pay, С‚Рѕ РїСЂРѕСЃС‚Рѕ РЅР°Р¶РјРёС‚Рµ Enter")
         var inputCard = readLine()
-        println("Введите сумму предыдущих переводов в этом месяце")
+        println("Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РїСЂРµРґС‹РґСѓС‰РёС… РїРµСЂРµРІРѕРґРѕРІ РІ СЌС‚РѕРј РјРµСЃСЏС†Рµ")
         var inputOldTransfer = readLine()
 
-        println("Введите сумму нового перевода")
+        println("Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РЅРѕРІРѕРіРѕ РїРµСЂРµРІРѕРґР°")
         var inputNewTransfer = Integer.parseInt(readLine())
 
         commission(inputCard, inputOldTransfer, inputNewTransfer)
@@ -24,17 +24,17 @@ fun main() {
 fun commission(inputCard: String?, inputOldTransfer: String?, inputNewTransfer: Int) {
 
     when{
-        (inputCard == "Master" || inputCard == "Maestro" || inputCard == "Мир" || inputCard == "Visa" ) && (Integer.parseInt(inputOldTransfer) + inputNewTransfer > 600000) -> {
-            println("Общий размер суммы перевода за месяц превышает 600 000 рублей.").toString()
+        (inputCard == "Master" || inputCard == "Maestro" || inputCard == "РњРёСЂ" || inputCard == "Visa" ) && (Integer.parseInt(inputOldTransfer) + inputNewTransfer > 600000) -> {
+            println("РћР±С‰РёР№ СЂР°Р·РјРµСЂ СЃСѓРјРјС‹ РїРµСЂРµРІРѕРґР° Р·Р° РјРµСЃСЏС† РїСЂРµРІС‹С€Р°РµС‚ 600 000 СЂСѓР±Р»РµР№.").toString()
 
         }
         (inputCard == "Master" || inputCard == "Maestro") && (75000 < Integer.parseInt(inputOldTransfer) + inputNewTransfer &&  Integer.parseInt(inputOldTransfer) + inputNewTransfer < 600000) -> String.format("%.0f",(inputNewTransfer/100*0.6 + 20)*100).toString()
-        (inputCard == "Visa" || inputCard == "Мир") && inputNewTransfer/100*0.75 < 35 -> println("Комиссия составляет " + 35*100 + " копеек").toString()
-        (inputCard == "Visa" || inputCard == "Мир") && inputNewTransfer/100*0.75 > 35 -> println("Комиссия составляет " + String.format("%.0f",inputNewTransfer/100*0.75*100) + " копеек").toString()
+        (inputCard == "Visa" || inputCard == "РњРёСЂ") && inputNewTransfer/100*0.75 < 35 -> println("РљРѕРјРёСЃСЃРёСЏ СЃРѕСЃС‚Р°РІР»СЏРµС‚ " + 35*100 + " РєРѕРїРµРµРє").toString()
+        (inputCard == "Visa" || inputCard == "РњРёСЂ") && inputNewTransfer/100*0.75 > 35 -> println("РљРѕРјРёСЃСЃРёСЏ СЃРѕСЃС‚Р°РІР»СЏРµС‚ " + String.format("%.0f",inputNewTransfer/100*0.75*100) + " РєРѕРїРµРµРє").toString()
 
-        inputCard == "VK" && inputNewTransfer >15000 ->println("Сумму разового перевода превышает 15000 рублей. Операция отклонена!").toString()
-        inputCard == "VK" && inputNewTransfer + Integer.parseInt(inputOldTransfer) > 45000 ->println("Общая сумма перевода за месяц превышает 45000 рублей. Операция отклонена!").toString()
-        //else -> println("Комиссия составляет 0 копеек.")
+        inputCard == "VK" && inputNewTransfer >15000 ->println("РЎСѓРјРјСѓ СЂР°Р·РѕРІРѕРіРѕ РїРµСЂРµРІРѕРґР° РїСЂРµРІС‹С€Р°РµС‚ 15000 СЂСѓР±Р»РµР№. РћРїРµСЂР°С†РёСЏ РѕС‚РєР»РѕРЅРµРЅР°!").toString()
+        inputCard == "VK" && inputNewTransfer + Integer.parseInt(inputOldTransfer) > 45000 ->println("РћР±С‰Р°СЏ СЃСѓРјРјР° РїРµСЂРµРІРѕРґР° Р·Р° РјРµСЃСЏС† РїСЂРµРІС‹С€Р°РµС‚ 45000 СЂСѓР±Р»РµР№. РћРїРµСЂР°С†РёСЏ РѕС‚РєР»РѕРЅРµРЅР°!").toString()
+        //else -> println("РљРѕРјРёСЃСЃРёСЏ СЃРѕСЃС‚Р°РІР»СЏРµС‚ 0 РєРѕРїРµРµРє.")
 
     }
 }
