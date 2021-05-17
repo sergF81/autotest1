@@ -8,16 +8,17 @@ class MainKtTest {
 
     @Test
     fun commission() {
-        val card = "Master"
-        val oldTransfer = "70000"
-        val newTransfer = 700000
+        val newTransfer = 15000
+        val oldTransfer = "6000"
+        val card = "Visa"
+
 
         val result = commission(
-            inputCard = card,
+            inputNewTransfer = newTransfer,
             inputOldTransfer = oldTransfer,
-            inputNewTransfer = newTransfer
+            inputCard = card
         )
 
-        assertEquals("Общий размер суммы перевода за месяц превышает 600 000 рублей.", result)
+        assertEquals("Комиссия составляет 11250 копеек", result)
     }
 }
